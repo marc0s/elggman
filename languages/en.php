@@ -23,7 +23,7 @@ or send a message to
 
 %s",
 	'elggman:subscription:options' => "Subscription options",
-	'elggman:owner' => "%s' mailing list",
+	'elggman:owner' => "%s's mailing list",
 	'elggman:members' => "Mailing list members",
 );
 
