@@ -6,6 +6,7 @@
 $english = array(
 	'elggman' => "Mailing list",
 	'elggman:subscribe' => "Subscribe",
+	'elggman:unsubscribe' => "Unsubscribe",
 	'elggman:subscribe:info' => "You'll receive forum posts in your mailbox and you'll be able to reply writing a message.",
 	'elggman:subscription:failure' => "Something went wrong while you was subscribing",
 	'elggman:subscribed' => "You subscribed successfully!",
@@ -22,6 +23,7 @@ or send a message to
 
 %s",
 	'elggman:subscription:options' => "Subscription options",
+	'elggman:owner' => "%s' mailing list",
 );
 
 add_translation('en', $english);

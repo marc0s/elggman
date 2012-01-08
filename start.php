@@ -56,11 +56,11 @@ function elggman_page_handler($page) {
 			break;
 		case 'view':
 			set_input('guid', $page[1]);
-			include "$page_dir/view.php";
+			include "$pages_dir/view.php";
 			break;
 		case 'edit':
 			set_input('guid', $page[1]);
-			include "$page_dir/edit.php";
+			include "$pages_dir/edit.php";
 			break;
 		default:
 			return false;
