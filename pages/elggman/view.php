@@ -24,6 +24,7 @@ elgg_register_menu_item('title', array(
 	'text' => elgg_echo('elggman:unsubscribe'),
 	'href' => "action/elggman/unsubscribe?user=$user->guid&group=$group->guid",
 	'link_class' => 'elgg-button elgg-button-delete',
+	'is_action' => true,
 ));
 
 $body = elgg_view_layout('content', array(
