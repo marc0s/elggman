@@ -30,7 +30,7 @@ if (!$group->isMember($user)) {
 }
 
 //check to see if the user has already subscribed
-if (check_entity_relationship($user_guid, 'notifymailshot', $group_guid)) {
+if (elggman_is_user_subscribed($user_guid, $group_guid)) {
 	system_message(elgg_echo("elggman:alreadysubscribed"));
 	forward(REFERER);
 }

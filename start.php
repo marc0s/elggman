@@ -68,6 +68,10 @@ function elggman_page_handler($page) {
 	return true;
 }
 
+function elggman_is_user_subscribed($user_guid, $group_guid) {
+	return check_entity_relationship($user_guid, 'notifymailshot', $group_guid);
+}
+
 function elggman_get_group_mailinglist($group) {
 	if ($group->alias) {
 		return $group->alias . '@' . elgg_get_plugin_setting('mailname', 'elggman');

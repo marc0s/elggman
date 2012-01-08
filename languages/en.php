@@ -21,6 +21,7 @@ You are now a member of the '%s' mailing list! Click below to begin posting!
 or send a message to
 
 %s",
+	'elggman:subscription:options' => "Subscription options",
 );
 
 add_translation('en', $english);
