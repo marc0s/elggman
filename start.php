@@ -67,3 +67,10 @@ function elggman_page_handler($page) {
 	}
 	return true;
 }
+
+function elggman_get_group_mailinglist($group) {
+	if ($group->alias) {
+		return $group->alias . '@' . elgg_get_plugin_setting('mailname', 'elggman');
+	}
+	return false;
+}
