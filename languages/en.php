@@ -24,6 +24,7 @@ or send a message to
 %s",
 	'elggman:subscription:options' => "Subscription options",
 	'elggman:owner' => "%s' mailing list",
+	'elggman:members' => "Mailing list members",
 );
 
 add_translation('en', $english);

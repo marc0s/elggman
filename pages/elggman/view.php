@@ -9,6 +9,8 @@ $group = get_entity(get_input('guid'));
 
 $user = elgg_get_page_owner_entity();
 
+elgg_set_page_owner_guid($group->guid);
+
 elgg_push_breadcrumb(elgg_echo('elggman'), "elggman/owner/$user->username");
 elgg_push_breadcrumb($group->name);
 
@@ -27,6 +29,7 @@ elgg_register_menu_item('title', array(
 $body = elgg_view_layout('content', array(
 	'content' => $content,
 	'title' => $title,
+	'sidebar' => $sidebar,
 	'filter' => '',
 ));
 
