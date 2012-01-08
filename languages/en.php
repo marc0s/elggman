@@ -25,6 +25,9 @@ or send a message to
 	'elggman:subscription:options' => "Subscription options",
 	'elggman:owner' => "%s's mailing list",
 	'elggman:members' => "Mailing list members",
+	'elggman:obfuscated' => "Send my email obfuscated on mails (%s@%s)",
+	'elggman:starred' => "Receive mails only from starred threads",
+		
 );
 
 add_translation('en', $english);

@@ -33,6 +33,7 @@ function elggman_init() {
 	$action_path = elgg_get_plugins_path() . 'elggman/actions/elggman';
 	elgg_register_action("elggman/subscribe", "$action_path/subscribe.php");
 	elgg_register_action("elggman/unsubscribe", "$action_path/unsubscribe.php");
+	elgg_register_action("elggman/subscription/edit", "$action_path/subscription/edit.php");
 }
 
 /**

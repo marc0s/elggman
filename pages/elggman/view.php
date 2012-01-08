@@ -16,7 +16,7 @@ elgg_push_breadcrumb($group->name);
 
 $title = elgg_echo('elggman:owner', array($group->name));
 
-$content = elgg_view_form('elggman/subscription/edit', array(), array());
+$content = elgg_view_form('elggman/subscription/edit', array(), array('entity' => $group));
 $sidebar = elgg_view('elggman/sidebar/members', array('entity' => $group));
 
 elgg_register_menu_item('title', array(
