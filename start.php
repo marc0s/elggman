@@ -23,8 +23,10 @@ function elggman_init() {
 	// Register a page handler, so we can have nice URLs
 	elgg_register_page_handler('elggman', 'elggman_page_handler');
 	
+	elgg_register_event_handler('create', 'object', 'elggman_notifications');
+	
 	// Register granular notification for this object type
-	//register_notification_object('object', 'file', elgg_echo('file:newupload'));
+	//register_notification_object('object', 'groupforumtopic', elgg_echo('elggman:newupload'));
 
 	// Listen to notification events and supply a more useful message
 	//elgg_register_plugin_hook_handler('notify:entity:message', 'object', 'file_notify_message');
@@ -69,8 +71,41 @@ function elggman_page_handler($page) {
 	return true;
 }
 
+function elggman_notifications($event, $object_type, $object) {
+	if (elgg_instanceof($object, 'object', 'groupforumtopic')) {
+		$user  = $object->getOwnerEntity();
+		$group = $object->getContainerGUID();
+		
+		$from = elggman_get_user_email($user, $group);
+		$subject = $object->title;
+		$message = elgg_view('output/plaintext', array('value' => $object->description));
+		
+		foreach (elggman_get_subscriptors($group->guid) as $subscriptor) {
+			$to = $subscriptor->email;
+			elgg_send_email($from, $to, $subject, $message);
+		}
+	}
+}
+
 function elggman_is_user_subscribed($user_guid, $group_guid) {
 	return check_entity_relationship($user_guid, 'notifymailshot', $group_guid);
+}
+
+function elggman_get_subscriptors($group_guid) {
+	return elgg_get_entities_from_relationship(array(
+				'type' => 'user',
+				'relationship' => 'notifymailshot',
+				'relationship_guid' => $group_guid,
+				'inverse_relationship' => true,
+				));
+}
+
+function elggman_get_user_email($user, $group) {
+	if (check_entity_relationship($user->guid, 'obfuscated_groupmailshot', $group->guid)) {
+		return $user->username . '@' . parse_url(elgg_get_site_url(), PHP_URL_HOST);
+	} else {
+		return $user->email;
+	}
 }
 
 function elggman_get_group_mailinglist($group) {
